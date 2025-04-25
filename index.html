@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Conversor de Duração de Filme</title>
+</head>
+<body>
+    <h1>Cadastro de Filme</h1>
+
+    <form id="formFilme">
+        <label for="titulo">Título do Filme:</label><br>
+        <input type="text" id="titulo" name="titulo" required><br><br>
+
+        <label for="duracao">Duração do Filme (em minutos):</label><br>
+        <input type="number" id="duracao" name="duracao" required><br><br>
+
+        <button type="submit">Mostrar Resultado</button>
+    </form>
+
+    <h2 id="resultado"></h2>
+
+    <script>
+        // Função para converter minutos em horas e minutos
+        function converterDuracao(duracao) {
+            let horas = Math.floor(duracao / 60);
+            let minutos = duracao % 60;
+            return `${horas} hora(s) e ${minutos} minuto(s)`;
+        }
+
+        // Evento para processar o formulário
+        document.getElementById('formFilme').addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            let titulo = document.getElementById('titulo').value;
+            let duracao = parseInt(document.getElementById('duracao').value);
+
+            if (titulo && duracao) {
+                let duracaoFormatada = converterDuracao(duracao);
+                document.getElementById('resultado').innerHTML = `O filme "${titulo}" tem duração de: ${duracaoFormatada}.`;
+            } else {
+                document.getElementById('resultado').innerHTML = "Por favor, preencha todos os campos.";
+            }
+        });
+    </script>
+</body>
+</html>
