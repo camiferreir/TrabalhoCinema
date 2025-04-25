@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Informações do Filme</title>
+    <!-- Importando a fonte "Poppins" do Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400&display=swap" rel="stylesheet">
+
+    <style>
+        /* Aplicando a fonte "Poppins" no corpo da página */
+        body {
+            background-color: #fbe6e6; /* Fundo suave em tons de vermelho claro */
+            font-family: 'Poppins', sans-serif; /* Fonte delicada */
+            color: #444;
+            text-align: center;
+            padding: 30px;
+        }
+
+        h1 {
+            color: #9b2d20; /* Título em um tom mais intenso de vermelho */
+            font-weight: 400; /* Peso da fonte leve */
+            margin-bottom: 20px;
+        }
+
+        label {
+            font-size: 1.1em;
+            color: #9b2d20; /* Cor do texto dos rótulos em vermelho */
+            margin-bottom: 8px;
+            display: block;
+        }
+
+        input {
+            padding: 10px;
+            width: 100%;
+            max-width: 300px;
+            margin-bottom: 20px;
+            border: 1px solid #f8b4b0; /* Borda suave em tom de vermelho claro */
+            border-radius: 8px;
+            background-color: #fff;
+            color: #333;
+            font-size: 1em;
+            outline: none;
+            transition: border-color 0.3s;
+        }
+
+        input:focus {
+            border-color: #f76c6c; /* Borda vermelha ao focar */
+        }
+
+        button {
+            padding: 12px 20px;
+            background-color: #e14d44; /* Fundo do botão em tom de vermelho suave */
+            color: white;
+            border: none;
+            border-radius: 30px;
+            font-size: 1.1em;
+            cursor: pointer;
+            width: 100%;
+            max-width: 300px;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #c13a2d; /* Cor do botão ao passar o mouse (vermelho mais forte) */
+        }
+
+        h2 {
+            font-size: 1.2em;
+            color: #9b2d20; /* Cor do resultado em tom de vermelho */
+            margin-top: 20px;
+            font-weight: 300; /* Fonte mais leve para o resultado */
+        }
+    </style>
+</head>
+<body>
+    <h1>Informações do Filme</h1>
+
+    <label for="titulo">Título do Filme:</label>
+    <input type="text" id="titulo" placeholder="Digite o título do filme"><br>
+
+    <label for="duracao">Duração em minutos:</label>
+    <input type="number" id="duracao" placeholder="Digite a duração do filme em minutos"><br>
+
+    <button onclick="mostrarInformacoes()">Mostrar Informações</button>
+
+    <h2 id="informacoes"></h2>
+
+    <script>
+        function mostrarInformacoes() {
+            var titulo = document.getElementById("titulo").value;
+            var duracao = parseInt(document.getElementById("duracao").value);
+
+            if (titulo === "" || isNaN(duracao)) {
+                alert("Por favor, preencha todos os campos corretamente.");
+                return;
+            }
+
+            // Função para converter minutos para horas e minutos
+            var horas = Math.floor(duracao / 60);
+            var minutos = duracao % 60;
+
+            var resultado = `O filme "${titulo}" tem uma duração de ${horas} hora(s) e ${minutos} minuto(s).`;
+            document.getElementById("informacoes").innerText = resultado;
+        }
+    </script>
+</body>
+</html>
